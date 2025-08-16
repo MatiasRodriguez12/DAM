@@ -1,0 +1,32 @@
+.info-card {
+  width: 300px;
+  margin: 16px auto;
+  text-align: left;
+
+  ion-card-content p {
+    font-size: 16px;
+    margin: 8px 0;
+  }
+}
+
+.card-actions {
+  display: flex;
+  gap: 12px;           /* espacio entre botones */
+  padding: 16px;
+  justify-content: center;  /* opcional: centra los botones en el card */
+}
+
+.action-button {
+  flex: 1;             /* hace que cada botón tome igual ancho */
+  max-width: 150px;    /* ancho máximo fijo para cada botón */
+}
+
+.btn-rojo {
+  --background: #ff4d4d;   /* rojo */
+  --color: white;
+}
+
+.btn-verde {
+  --background: #4CAF50;   /* verde */
+  --color: white;
+}

@@ -1,0 +1,20 @@
+.contenedor-cards {
+    display: flex;
+    flex-wrap: wrap;     /* permite que bajen de línea si no entran */
+    gap: 12px;           /* separación entre cards */
+    justify-content: center; /* centra los cards en la fila */
+  }
+  
+  .mini-card {
+    width: 200px;        /* ancho fijo para uniformidad */
+    text-align: center;  /* centra el texto */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: #FFFFFF; /* verde */
+    color: black;              /* texto blanco para contraste */
+  }
+  
+  .mini-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }

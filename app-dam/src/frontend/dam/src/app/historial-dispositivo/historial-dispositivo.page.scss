@@ -1,0 +1,16 @@
+.cards-container {
+  display: flex;
+  flex-wrap: wrap; /* Para que salten a la siguiente línea si no entra */
+  gap: 16px;       /* Espacio entre cards */
+  justify-content: center; /* Centra horizontalmente */
+}
+
+.info-card {
+  width: 300px;
+  text-align: left;
+}
+
+.info-card ion-card-content p {
+  font-size: 16px;
+  margin: 8px 0;
+}

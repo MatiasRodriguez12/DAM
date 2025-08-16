@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>informacion-dispositivos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">listado-dispositivos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  
+  <!-- <div class="contenedor-cards">
+
+    < @for (dispositivo of dispositivos; track dispositivo.dispositivoId; let e = $even) {
+      <ion-card class="mini-card" button routerLink="/login">
+        <ion-card-content>
+          <p>{{ dispositivo.nombre }}</p>
+          <p>{{ dispositivo.ubicacion }}</p>
+        </ion-card-content>
+      </ion-card>
+  } @empty {
+      <p>No hay dispositivos!</p>
+  } 
+    
+
+  </div> -->
+  <ion-card class="info-card">
+    <ion-card-content>
+      <p><strong>Nombre:</strong> {{ nombre }}</p>
+      <p><strong>Humedad:</strong> {{ ultima_medicion }} %</p>
+      <p><strong>Fecha:</strong> {{ fecha | date: 'medium' }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="card-actions">
+    <ion-button
+      [ngClass]="estado_valvula ? 'btn-verde' : 'btn-rojo'"
+      class="action-button"
+      (click)="toggleValvula()">
+      Válvula
+    </ion-button>
+    <ion-button
+      color="secondary"
+      class="action-button"
+      [routerLink]="['/historial-dispositivo', id]">
+      Historial
+    </ion-button>
+  </div>
+  
+
+</ion-content>
+
+<!-- <ion-button (click)="subscribe()">Subscribe</ion-button>
+<ion-button (click)="unsubscribe()">Unsubscribe</ion-button> -->
+

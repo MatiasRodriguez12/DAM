@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>historial-dispositivos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">listado-dispositivos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  
+  <div class="contenedor-cards">
+
+    <div class="cards-container">
+      @for (medicion of mediciones; track medicion.medicionId) {
+        <ion-card class="info-card">
+          <ion-card-content>
+            <p><strong>Id medición:</strong> {{ medicion.medicionId }}</p>
+            <p><strong>Humedad:</strong> {{ medicion.valor }} %</p>
+            <p><strong>Fecha:</strong> {{ medicion.fecha | date: 'medium' }}</p>
+          </ion-card-content>
+        </ion-card>
+      }
+    </div>
+
+  </div>
+
+</ion-content>
+
+<!-- <ion-button (click)="subscribe()">Subscribe</ion-button>
+<ion-button (click)="unsubscribe()">Unsubscribe</ion-button> -->
+

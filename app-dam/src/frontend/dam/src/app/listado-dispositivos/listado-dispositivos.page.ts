@@ -1,16 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonList, IonItem, IonLabel, IonCard, IonCardContent } from '@ionic/angular/standalone';
 import { interval, Observable, Subscription, fromEvent } from 'rxjs';
 import { DispositivoService } from '../services/dispositivo.service';
-
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-listado-dispositivos',
   templateUrl: './listado-dispositivos.page.html',
   styleUrls: ['./listado-dispositivos.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonList, IonItem, IonLabel, IonCard, IonCardContent, RouterLink ]
 })
 export class ListadoDispositivosPage implements OnInit, OnDestroy {
 
