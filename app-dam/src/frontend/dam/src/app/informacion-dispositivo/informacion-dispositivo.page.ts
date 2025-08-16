@@ -62,6 +62,7 @@ export class InformacionDispositivoPage implements OnInit, OnDestroy {
   ngOnDestroy() {
     // this.subscription.unsubscribe()
   }
+  
 
   async toggleValvula() {
     console.log('Se hizo clic en la válvula');
@@ -71,12 +72,28 @@ export class InformacionDispositivoPage implements OnInit, OnDestroy {
     try {
       const res = await this.dispositivoService.getActualizarValvula(
         Number(this.id),
-        40, // humedad hardcodeada
+        Math.floor(Math.random() * 101), // humedad aleatoria
         this.estado_valvula
       );
       console.log(res);
+
+      await this.dispositivoService.getUltimaMedicion(Number(this.id))
+      .then((res) => {
+        if (res.length > 0) {
+          this.ultima_medicion = Number(res[0].valor);
+          this.fecha=res[0].fecha          
+        } else {
+          this.ultima_medicion = 0;
+        }
+        console.log(this.ultima_medicion)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     } catch (error) {
       console.error(error);
     }
   }
+
+
 }

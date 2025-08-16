@@ -17,6 +17,11 @@
       <p><strong>Nombre:</strong> {{ nombre }}</p>
       <p><strong>Humedad:</strong> {{ ultima_medicion }} %</p>
       <p><strong>Fecha:</strong> {{ fecha | personalizarFecha }}</p>
+      @if (estado_valvula==1) {
+        <p>Válvula abierta</p>
+      }  @else {
+        <p>Válvula cerrada</p>
+      }
     </ion-card-content>
   </ion-card>
 
