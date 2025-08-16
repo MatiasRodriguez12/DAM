@@ -7,13 +7,14 @@ import { DispositivoService } from '../services/dispositivo.service';
 import { RouterLink } from '@angular/router';
 import { Medicion } from '../models/medicion.interface';
 import { HttpClient } from '@angular/common/http'; 
+import { PersonalizarFechaPipe } from '../pipe/personalizar-fecha.pipe';
 
 @Component({
   selector: 'app-informacion-dispositivo',
   templateUrl: './informacion-dispositivo.page.html',
   styleUrls: ['./informacion-dispositivo.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonList, IonItem, IonLabel, IonCard, IonCardContent, RouterLink ]
+  imports: [PersonalizarFechaPipe,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonList, IonItem, IonLabel, IonCard, IonCardContent, RouterLink ]
 })
 export class InformacionDispositivoPage implements OnInit, OnDestroy {
 
@@ -62,28 +63,20 @@ export class InformacionDispositivoPage implements OnInit, OnDestroy {
     // this.subscription.unsubscribe()
   }
 
-  toggleValvula() {
+  async toggleValvula() {
     console.log('Se hizo clic en la válvula');
-    
-    // Ejemplo: invertir estado
-    if(this.estado_valvula==0){
-      this.estado_valvula=1;
-    }
-    else{
-      this.estado_valvula=0;
-    }
   
-    this.http.post('http://localhost:8000/actualizar_medicion', {
-      dispositivoId: this.id,
-      humedad: 20,
-      estadoValvula: this.estado_valvula
-    }).subscribe({
-      next: () => {
-        console.log('Datos enviados correctamente');
-      },
-      error: (err) => {
-        console.error('Error al enviar datos', err);
-      }
-    });
+    this.estado_valvula = this.estado_valvula === 0 ? 1 : 0;
+  
+    try {
+      const res = await this.dispositivoService.getActualizarValvula(
+        Number(this.id),
+        40, // humedad hardcodeada
+        this.estado_valvula
+      );
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

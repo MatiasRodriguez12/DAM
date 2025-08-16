@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>informacion-dispositivos</ion-title>
+    <ion-title class="titulo-centrado">Ultima medición registrada</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,27 +11,12 @@
     </ion-toolbar>
   </ion-header>
 
-  
-  <!-- <div class="contenedor-cards">
 
-    < @for (dispositivo of dispositivos; track dispositivo.dispositivoId; let e = $even) {
-      <ion-card class="mini-card" button routerLink="/login">
-        <ion-card-content>
-          <p>{{ dispositivo.nombre }}</p>
-          <p>{{ dispositivo.ubicacion }}</p>
-        </ion-card-content>
-      </ion-card>
-  } @empty {
-      <p>No hay dispositivos!</p>
-  } 
-    
-
-  </div> -->
   <ion-card class="info-card">
     <ion-card-content>
       <p><strong>Nombre:</strong> {{ nombre }}</p>
       <p><strong>Humedad:</strong> {{ ultima_medicion }} %</p>
-      <p><strong>Fecha:</strong> {{ fecha | date: 'medium' }}</p>
+      <p><strong>Fecha:</strong> {{ fecha | personalizarFecha }}</p>
     </ion-card-content>
   </ion-card>
 

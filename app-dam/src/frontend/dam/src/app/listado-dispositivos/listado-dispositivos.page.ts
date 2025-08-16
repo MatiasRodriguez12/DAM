@@ -5,12 +5,14 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonList, IonIte
 import { interval, Observable, Subscription, fromEvent } from 'rxjs';
 import { DispositivoService } from '../services/dispositivo.service';
 import { RouterLink } from '@angular/router';
+import { Colorear } from '../directives/colorear';
+
 @Component({
   selector: 'app-listado-dispositivos',
   templateUrl: './listado-dispositivos.page.html',
   styleUrls: ['./listado-dispositivos.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonList, IonItem, IonLabel, IonCard, IonCardContent, RouterLink ]
+  imports: [Colorear,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonList, IonItem, IonLabel, IonCard, IonCardContent, RouterLink ]
 })
 export class ListadoDispositivosPage implements OnInit, OnDestroy {
 

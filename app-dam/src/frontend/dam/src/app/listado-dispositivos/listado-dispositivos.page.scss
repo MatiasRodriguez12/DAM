@@ -14,7 +14,7 @@
     color: black;              /* texto blanco para contraste */
   }
   
-  .mini-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  .titulo-centrado {
+    text-align: center;
+    width: 100%;
   }

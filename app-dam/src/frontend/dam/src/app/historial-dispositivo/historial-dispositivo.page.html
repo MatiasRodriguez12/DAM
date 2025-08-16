@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>historial-dispositivos</ion-title>
+    <ion-title class="titulo-centrado">Historial de lecturas</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -20,7 +20,7 @@
           <ion-card-content>
             <p><strong>Id medición:</strong> {{ medicion.medicionId }}</p>
             <p><strong>Humedad:</strong> {{ medicion.valor }} %</p>
-            <p><strong>Fecha:</strong> {{ medicion.fecha | date: 'medium' }}</p>
+            <p><strong>Fecha:</strong> {{ medicion.fecha | personalizarFecha}}</p>
           </ion-card-content>
         </ion-card>
       }
@@ -29,7 +29,3 @@
   </div>
 
 </ion-content>
-
-<!-- <ion-button (click)="subscribe()">Subscribe</ion-button>
-<ion-button (click)="unsubscribe()">Unsubscribe</ion-button> -->
-

@@ -6,12 +6,13 @@ import { interval, Observable, Subscription, fromEvent } from 'rxjs';
 import { DispositivoService } from '../services/dispositivo.service';
 import { RouterLink } from '@angular/router';
 import { Medicion } from '../models/medicion.interface';
+import { PersonalizarFechaPipe } from '../pipe/personalizar-fecha.pipe';
 @Component({
   selector: 'app-historial-dispositivo',
   templateUrl: './historial-dispositivo.page.html',
   styleUrls: ['./historial-dispositivo.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonList, IonItem, IonLabel, IonCard, IonCardContent, RouterLink ]
+  imports: [PersonalizarFechaPipe,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonList, IonItem, IonLabel, IonCard, IonCardContent, RouterLink ]
 })
 export class HistorialDispositivoPage implements OnInit, OnDestroy {
 

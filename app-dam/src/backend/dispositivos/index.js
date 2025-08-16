@@ -246,13 +246,16 @@ routerDispositivos.get('/obtener_estado_valvula/:dispositivoId', async (req, res
 //     }
 // });
 
-routerDispositivos.post('/actualizar_medicion', async (req, res) => {
-    const { dispositivoId, humedad, estadoValvula } = req.body;
+routerDispositivos.get('/actualizar_medicion/:dispositivoId/:humedad/:estadoValvula', async (req, res) => {
+
+    const dispositivoId = req.params.dispositivoId;
+    const humedad = req.params.humedad;
+    const estadoValvula = Number(req.params.estadoValvula);
     const fechaActual = new Date();
 
     try {
-        // 1) Obtener la electrovalvula asociada al dispositivo
-        const valvulaId = await new Promise<number>((resolve, reject) => {
+        // 1) Obtener la electrovalvula asociada
+        const valvulaId = await new Promise((resolve, reject) => {
             pool.query(
                 'SELECT electrovalvulaId FROM Dispositivos WHERE dispositivoId = ? LIMIT 1',
                 [dispositivoId],
@@ -263,8 +266,8 @@ routerDispositivos.post('/actualizar_medicion', async (req, res) => {
                 }
             );
         });
-        
-        // Insertar nuevo estado en Log_Riegos
+
+        // 2) Insertar nuevo estado en Log_Riegos
         await new Promise((resolve, reject) => {
             pool.query(
                 'INSERT INTO Log_Riegos (apertura, fecha, electrovalvulaId) VALUES (?, ?, ?)',
@@ -276,7 +279,7 @@ routerDispositivos.post('/actualizar_medicion', async (req, res) => {
             );
         });
 
-        // Insertar nueva medición
+        // 3) Insertar nueva medición
         await new Promise((resolve, reject) => {
             pool.query(
                 'INSERT INTO Mediciones (fecha, valor, dispositivoId) VALUES (?, ?, ?)',
@@ -288,10 +291,11 @@ routerDispositivos.post('/actualizar_medicion', async (req, res) => {
             );
         });
 
-        res.sendStatus(200); // Sin cuerpo de respuesta
+        res.json({ mensaje: "Actualización ok" });  // Envía JSON
+
     } catch (error) {
-        console.error('Error al actualizar medición:', error);
-        res.sendStatus(500);
+        console.error('Error al actualizar medición:', error.message || error);
+        res.status(500).json({ error: error.message || error });
     }
 });
 

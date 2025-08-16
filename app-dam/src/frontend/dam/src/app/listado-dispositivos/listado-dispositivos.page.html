@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>listado-dispositivos</ion-title>
+    <ion-title class="titulo-centrado">Lista de sensores</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,11 @@
   <div class="contenedor-cards">
 
     @for (dispositivo of dispositivos; track dispositivo.dispositivoId; let e = $even) {
-      <ion-card class="mini-card" button   [routerLink]="['/informacion-dispositivo', dispositivo.dispositivoId, dispositivo.nombre]">
+      <ion-card 
+        class="mini-card" 
+        button 
+        [routerLink]="['/informacion-dispositivo', dispositivo.dispositivoId, dispositivo.nombre]"
+        appColorear>
         <ion-card-content>
           <p>{{ dispositivo.nombre }}</p>
           <p>{{ dispositivo.ubicacion }}</p>

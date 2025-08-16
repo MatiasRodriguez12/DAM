@@ -26,5 +26,10 @@ export class DispositivoService {
     const url = `http://localhost:8000/obtener_estado_valvula/${id}`;
     return firstValueFrom(this._http.get<Medicion[]>(url));
   }
+
+  getActualizarValvula(id: number,humedad: number,estado_valvula: number): Promise<{ mensaje: string }> {
+    const url = `http://localhost:8000/actualizar_medicion/${id}/${humedad}/${estado_valvula}`;
+    return firstValueFrom(this._http.get<{ mensaje: string }>(url));
+  }
   
 }
