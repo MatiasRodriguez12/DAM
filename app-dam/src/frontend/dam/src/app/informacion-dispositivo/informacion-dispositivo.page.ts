@@ -2,10 +2,8 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonList, IonItem, IonLabel, IonCard, IonCardContent } from '@ionic/angular/standalone';
-import { interval, Observable, Subscription, fromEvent } from 'rxjs';
 import { DispositivoService } from '../services/dispositivo.service';
 import { RouterLink } from '@angular/router';
-import { Medicion } from '../models/medicion.interface';
 import { HttpClient } from '@angular/common/http'; 
 import { PersonalizarFechaPipe } from '../pipe/personalizar-fecha.pipe';
 
@@ -49,7 +47,7 @@ export class InformacionDispositivoPage implements OnInit, OnDestroy {
     
       await this.dispositivoService.getEstadoValvula(Number(this.id))
   .then((res: any) => {
-    // Si lo que recibís es un string "0" o "1"
+    
     this.estado_valvula = Number(res); 
     console.log("Estado válvula:", this.estado_valvula);
   })
@@ -60,7 +58,7 @@ export class InformacionDispositivoPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.subscription.unsubscribe()
+    
   }
   
 
@@ -72,7 +70,7 @@ export class InformacionDispositivoPage implements OnInit, OnDestroy {
     try {
       const res = await this.dispositivoService.getActualizarValvula(
         Number(this.id),
-        Math.floor(Math.random() * 101), // humedad aleatoria
+        Math.floor(Math.random() * 101),
         this.estado_valvula
       );
       console.log(res);

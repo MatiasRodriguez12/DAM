@@ -2,10 +2,8 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonList, IonItem, IonLabel, IonCard, IonCardContent } from '@ionic/angular/standalone';
-import { interval, Observable, Subscription, fromEvent } from 'rxjs';
 import { DispositivoService } from '../services/dispositivo.service';
 import { RouterLink } from '@angular/router';
-import { Medicion } from '../models/medicion.interface';
 import { PersonalizarFechaPipe } from '../pipe/personalizar-fecha.pipe';
 @Component({
   selector: 'app-historial-dispositivo',
@@ -39,6 +37,6 @@ export class HistorialDispositivoPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.subscription.unsubscribe()
+ 
   }
 }

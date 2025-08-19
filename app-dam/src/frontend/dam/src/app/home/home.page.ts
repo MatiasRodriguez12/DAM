@@ -11,9 +11,5 @@ import { ListadoDispositivosPage } from '../listado-dispositivos/listado-disposi
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, RouterModule, ListadoDispositivosPage],
 })
 export class HomePage {
-  buttonState: boolean
-
-  constructor() {
-    this.buttonState = true
-  }
+ 
 }
